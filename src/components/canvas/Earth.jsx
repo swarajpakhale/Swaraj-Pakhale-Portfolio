@@ -1,3 +1,4 @@
+import ErrorBoundary from '../ErrorBoundary';
 import React, { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
@@ -37,7 +38,8 @@ const Earth = () => {
 
 const EarthCanvas = () => {
   return (
-    <Canvas
+    <ErrorBoundary fallback={null}>
+      <Canvas
       shadows
       frameloop='demand'
       dpr={[1, 1.5]}
@@ -73,6 +75,7 @@ const EarthCanvas = () => {
         <Preload all />
       </Suspense>
     </Canvas>
+    </ErrorBoundary>
   );
 };
 

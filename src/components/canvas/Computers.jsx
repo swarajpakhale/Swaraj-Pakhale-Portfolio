@@ -1,3 +1,4 @@
+import ErrorBoundary from '../ErrorBoundary';
 import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
@@ -63,7 +64,8 @@ const ComputersCanvas = () => {
   if (isMobile) return null;
 
   return (
-    <Canvas
+    <ErrorBoundary fallback={null}>
+      <Canvas
       frameloop="demand"
       shadows
       dpr={[1, 1.5]}
@@ -90,6 +92,7 @@ const ComputersCanvas = () => {
 
       <Preload all />
     </Canvas>
+    </ErrorBoundary>
   );
 };
 

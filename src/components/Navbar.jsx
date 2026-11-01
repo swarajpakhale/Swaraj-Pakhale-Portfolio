@@ -14,7 +14,7 @@ const Navbar = () => {
           setActive("")
           window.scrollTo(0,0)
         }} >
-          <img src={logo} alt='SP logo' className='w-10 h-10 object-contain rounded-lg' />
+          <img src={logo} alt='SP logo' className='w-10 h-10 object-contain rounded-lg' loading='eager' fetchPriority='high' />
           <p className='text-white text-[18px] font-semibold cursor-pointer flex items-center tracking-wide'>
             Swaraj Pakhale
           </p>
@@ -46,6 +46,7 @@ const Navbar = () => {
           <img src={toggle ?close :menu} 
           alt='menu' 
           className='w-[27px] h-[27px] object-contain cursor-pointer '
+           loading='eager'
            onClick={() => setToggle(!toggle)} 
            />
            <div className={`${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-0 rounded-xl`}>

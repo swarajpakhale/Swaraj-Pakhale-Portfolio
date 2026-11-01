@@ -1,3 +1,4 @@
+import ErrorBoundary from '../ErrorBoundary';
 import { useState, useEffect, Suspense, useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial, Preload } from '@react-three/drei'
@@ -32,9 +33,10 @@ const SubtleStars = (props) => {
 
   useFrame((state, delta) => {
     if (prefersReducedMotion) return;
+    const safeDelta = Math.min(Math.max(delta || 0, 0), 0.1);
     if (ref.current) {
-      ref.current.rotation.x -= delta / 35;
-      ref.current.rotation.y -= delta / 45;
+      ref.current.rotation.x -= safeDelta / 35;
+      ref.current.rotation.y -= safeDelta / 45;
     }
   });
 
@@ -163,7 +165,8 @@ const StarsCanvas = ({ density = 'subtle', fixed = true }) => {
       className={`w-full ${fixed ? 'h-full fixed' : 'h-full absolute'} inset-0 z-0 pointer-events-none overflow-hidden`}
       style={{ pointerEvents: 'none' }}
     >
-      <Canvas
+      <ErrorBoundary fallback={null}>
+        <Canvas
         camera={{ position: [0, 0, 1] }}
         gl={{
           alpha: true,
@@ -183,6 +186,7 @@ const StarsCanvas = ({ density = 'subtle', fixed = true }) => {
         </Suspense>
         <Preload all />
       </Canvas>
+      </ErrorBoundary>
     </div>
   );
 };

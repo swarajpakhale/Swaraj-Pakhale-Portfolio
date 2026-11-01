@@ -43,11 +43,13 @@ const Hero = () => {
             <div className='absolute -inset-1 rounded-full bg-gradient-to-r from-[#915eff]/60 via-[#f43f85]/40 to-[#38bdf8]/60 opacity-60 blur-md group-hover:opacity-90 transition duration-500' />
             
             {/* Perfectly Circular Portrait Container */}
-            <div className='relative w-[190px] xs:w-[210px] sm:w-[230px] md:w-[250px] lg:w-[270px] h-[190px] xs:h-[210px] sm:h-[230px] md:h-[250px] lg:h-[270px] aspect-square rounded-full p-1 bg-[#0c1026] border-2 border-[#915eff]/70 shadow-[0_0_30px_rgba(145,94,255,0.35)] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-105'>
+            <div className='relative w-[155px] xs:w-[190px] sm:w-[230px] md:w-[250px] lg:w-[270px] h-[155px] xs:h-[190px] sm:h-[230px] md:h-[250px] lg:h-[270px] aspect-square rounded-full p-1 bg-[#0c1026] border-2 border-[#915eff]/70 shadow-[0_0_30px_rgba(145,94,255,0.35)] overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-105'>
               <img
                 src={swaraj_photo}
                 alt="Swaraj Pakhale"
                 className='w-full h-full object-cover object-[center_18%] rounded-full'
+                loading='eager'
+                fetchPriority='high'
               />
             </div>
           </div>

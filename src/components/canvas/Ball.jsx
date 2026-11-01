@@ -1,3 +1,4 @@
+import ErrorBoundary from '../ErrorBoundary';
 import React,{Suspense}from 'react'
 import { Canvas } from "@react-three/fiber"
 import { Decal,Float,OrbitControls,Preload,useTexture } from "@react-three/drei"
@@ -37,7 +38,8 @@ const Ball = (props) => {
 
 const BallCanvas=({icon}) =>{
   return(
-    <Canvas
+    <ErrorBoundary fallback={null}>
+      <Canvas
       frameloop="demand"
       dpr={[1, 1.5]}
       style={{ background: 'transparent' }}
@@ -60,6 +62,7 @@ const BallCanvas=({icon}) =>{
 
       <Preload all />
     </Canvas>
+    </ErrorBoundary>
   )
 }
 export default  BallCanvas

@@ -6,8 +6,6 @@ import { technologies } from "../constants"
 import { styles } from "../styles"
 import { textVariant } from "../utils/motion"
 
-const MAX_BALLS_MOBILE = 6;
-
 const Tech = () => {
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window !== "undefined") {
@@ -36,12 +34,15 @@ const Tech = () => {
         {technologies.map((technology, index) => (
           <div className="w-28 flex flex-col items-center justify-center group" key={technology.name}>
             <div className="w-28 h-28 flex items-center justify-center">
-              {isMobile && index >= MAX_BALLS_MOBILE ? (
-                <img
-                  src={technology.icon}
-                  alt={technology.name}
-                  className="w-20 h-20 object-contain drop-shadow-md"
-                />
+              {isMobile ? (
+                <div className="w-24 h-24 rounded-2xl bg-[#1d1836] flex items-center justify-center p-3 shadow-card border border-[#915eff]/20 group-hover:border-[#915eff]/60 transition-all duration-300">
+                  <img
+                    src={technology.icon}
+                    alt={technology.name}
+                    className="w-16 h-16 object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
               ) : (
                 <BallCanvas icon={technology.icon} />
               )}
