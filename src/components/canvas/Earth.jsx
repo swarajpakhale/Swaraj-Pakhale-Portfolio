@@ -41,7 +41,9 @@ const EarthCanvas = () => {
       shadows
       frameloop='demand'
       dpr={[1, 1.5]}
+      style={{ background: 'transparent' }}
       gl={{ 
+        alpha: true,
         preserveDrawingBuffer: true,
         powerPreference: 'low-power',
         antialias: false,

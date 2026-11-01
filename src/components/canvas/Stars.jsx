@@ -157,9 +157,12 @@ const DeepSpaceStars = (props) => {
   );
 };
 
-const StarsCanvas = ({ density = 'subtle' }) => {
+const StarsCanvas = ({ density = 'subtle', fixed = true }) => {
   return (
-    <div className='w-full h-full absolute inset-0 z-[0] pointer-events-none'>
+    <div
+      className={`w-full ${fixed ? 'h-full fixed' : 'h-full absolute'} inset-0 z-0 pointer-events-none overflow-hidden`}
+      style={{ pointerEvents: 'none' }}
+    >
       <Canvas
         camera={{ position: [0, 0, 1] }}
         gl={{

@@ -47,11 +47,11 @@ const EducationCard = ({ edu, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ type: "spring", duration: 0.75, delay: 0.15 * index }}
-      className="relative w-full"
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ type: "spring", duration: 0.75, delay: 0.1 * index }}
+      className="relative w-full overflow-hidden rounded-2xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -69,10 +69,10 @@ const EducationCard = ({ edu, index }) => {
         />
       )}
 
-      <div className="flex items-start gap-5 relative z-10">
+      <div className="flex items-start gap-3 sm:gap-5 relative z-10">
         {/* Timeline node */}
         <motion.div
-          className={`edu-timeline-node flex-shrink-0 w-[60px] h-[60px] rounded-full bg-gradient-to-br ${edu.color} flex items-center justify-center text-2xl shadow-lg relative`}
+          className={`edu-timeline-node flex-shrink-0 w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-br ${edu.color} flex items-center justify-center text-xl sm:text-2xl shadow-lg relative`}
           whileHover={{ scale: 1.2, rotate: 360 }}
           transition={{ type: "spring", stiffness: 200 }}
           animate={isHovered ? { boxShadow: `0 0 30px ${edu.glowColor}` } : { boxShadow: `0 0 10px ${edu.glowColor}44` }}
@@ -97,7 +97,7 @@ const EducationCard = ({ edu, index }) => {
           <div className={`edu-gradient-border absolute inset-0 rounded-2xl bg-gradient-to-r ${edu.color} opacity-60`} />
           
           {/* Inner content */}
-          <div className="relative bg-tertiary rounded-2xl p-6 sm:p-8">
+          <div className="relative bg-tertiary rounded-2xl p-4 sm:p-8 overflow-hidden">
             {/* Floating particles effect */}
             <div className="edu-particles absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
               {[...Array(6)].map((_, i) => (

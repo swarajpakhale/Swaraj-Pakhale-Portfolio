@@ -39,20 +39,27 @@ const BallCanvas=({icon}) =>{
   return(
     <Canvas
       frameloop="demand"
-     
-      
-      gl={{ preserveDrawingBuffer: true }}
+      dpr={[1, 1.5]}
+      style={{ background: 'transparent' }}
+      gl={{
+        alpha: true,
+        preserveDrawingBuffer: true,
+        powerPreference: 'low-power',
+        antialias: false,
+      }}
+      onCreated={({ gl }) => {
+        gl.domElement.addEventListener('webglcontextlost', (e) => {
+          e.preventDefault();
+        });
+      }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          enableZoom={false}/>
-
-       <Ball imgUrl={icon}/>
+        <OrbitControls enableZoom={false} />
+        <Ball imgUrl={icon} />
       </Suspense>
 
       <Preload all />
     </Canvas>
   )
-
 }
 export default  BallCanvas

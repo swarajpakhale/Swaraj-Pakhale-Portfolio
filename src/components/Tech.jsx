@@ -9,7 +9,12 @@ import { textVariant } from "../utils/motion"
 const MAX_BALLS_MOBILE = 6;
 
 const Tech = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth <= 768 || window.matchMedia("(max-width: 768px)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");

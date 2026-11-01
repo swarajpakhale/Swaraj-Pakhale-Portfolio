@@ -57,7 +57,7 @@ const ProfileCard = ({ index, name, username, url, color, icon }) => {
       target="_blank"
       rel="noopener noreferrer"
       variants={fadeIn("up", "spring", index * 0.2, 0.75)}
-      className="relative w-full sm:w-[250px] rounded-2xl p-[2px] cursor-pointer group"
+      className="relative w-full sm:w-[250px] rounded-2xl p-[2px] cursor-pointer group overflow-hidden"
     >
       {/* Rotating gradient border */}
       <div className="absolute inset-0 rounded-2xl overflow-hidden">

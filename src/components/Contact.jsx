@@ -55,7 +55,7 @@ const Contact = () => {
     <div className="xl:mt-4 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden ">
      <motion.div 
      variants={slideIn("left","tween", 0.2,1)}
-     className="flex-[0.75] relative rounded-2xl p-[2px]"
+     className="flex-[0.75] relative rounded-2xl p-[2px] overflow-hidden"
      >
       {/* Google colors rotating gradient border */}
       <div className="absolute inset-0 rounded-2xl overflow-hidden">
